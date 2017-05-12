@@ -28,6 +28,8 @@ public class WcsCallbackController {
     public HashMap<String, String> upload(HttpServletRequest httpServletRequest) {
         HashMap<String, String> res = new HashMap<>();
         res.put("resId", UUID.randomUUID().toString());
+        res.put("method", httpServletRequest.getMethod());
+        res.put("uri", httpServletRequest.getRequestURL().toString());
 
         try (ServletInputStream inputStream = httpServletRequest.getInputStream()) {
             if (inputStream.isFinished()) {

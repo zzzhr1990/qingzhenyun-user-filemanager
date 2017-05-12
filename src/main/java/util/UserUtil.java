@@ -10,15 +10,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * HOO
  * Created by guna on 2017/5/13.
  */
-@Component
+@Repository
 @Slf4j
 public class UserUtil implements ApplicationContextAware {
 
+    public UserUtil() {
+
+    }
     public static User getUserInSession() {
         return getUserById(1);
     }

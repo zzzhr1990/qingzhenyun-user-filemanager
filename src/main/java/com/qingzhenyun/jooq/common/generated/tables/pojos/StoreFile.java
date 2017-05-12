@@ -22,13 +22,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class StoreFile implements Serializable {
 
-    private static final long serialVersionUID = 965535359;
+    private static final long serialVersionUID = 1940966743;
 
     private String  hash;
     private Long    size;
     private Integer storeType;
-    private Integer storeBucket;
-    private Integer storeKey;
+    private String storeBucket;
+    private String storeKey;
     private Long    createTime;
     private String  mime;
     private Integer preview;
@@ -51,16 +51,16 @@ public class StoreFile implements Serializable {
     }
 
     public StoreFile(
-        String  hash,
-        Long    size,
-        Integer storeType,
-        Integer storeBucket,
-        Integer storeKey,
-        Long    createTime,
-        String  mime,
-        Integer preview,
-        String  previewId,
-        Integer previewType
+            String  hash,
+            Long    size,
+            Integer storeType,
+            String storeBucket,
+            String storeKey,
+            Long    createTime,
+            String  mime,
+            Integer preview,
+            String  previewId,
+            Integer previewType
     ) {
         this.hash = hash;
         this.size = size;
@@ -98,19 +98,19 @@ public class StoreFile implements Serializable {
         this.storeType = storeType;
     }
 
-    public Integer getStoreBucket() {
+    public String getStoreBucket() {
         return this.storeBucket;
     }
 
-    public void setStoreBucket(Integer storeBucket) {
+    public void setStoreBucket(String storeBucket) {
         this.storeBucket = storeBucket;
     }
 
-    public Integer getStoreKey() {
+    public String getStoreKey() {
         return this.storeKey;
     }
 
-    public void setStoreKey(Integer storeKey) {
+    public void setStoreKey(String storeKey) {
         this.storeKey = storeKey;
     }
 

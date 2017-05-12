@@ -65,20 +65,20 @@ public class User implements Serializable {
     public User(
             Integer id,
             Integer status,
-            String  username,
-            String  password,
-            String  salt,
+            String username,
+            String password,
+            String salt,
             Integer level,
-            String  email,
-            String  mobileContryCode,
-            String  mobileNumber,
-            Long    usedSize,
-            Long    totalSize,
+            String email,
+            String mobileContryCode,
+            String mobileNumber,
+            Long usedSize,
+            Long totalSize,
             Integer usedBandwidth,
             Integer totalBandwidth,
-            Long    createTime,
-            Long    lastActivateTime,
-            String  lastActivateIp
+            Long createTime,
+            Long lastActivateTime,
+            String lastActivateIp
     ) {
         this.id = id;
         this.status = status;

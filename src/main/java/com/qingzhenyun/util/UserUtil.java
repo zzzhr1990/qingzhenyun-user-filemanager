@@ -38,9 +38,7 @@ public class UserUtil implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        log.info("INIT_DSL_CONFIG");
         UserUtil.dslContext = applicationContext.getBean(DSLContext.class);
-        log.info("INIT RES {}", dslContext == null);
     }
 
     private static DSLContext dslContext;

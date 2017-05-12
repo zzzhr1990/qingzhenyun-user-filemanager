@@ -34,7 +34,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class StoreFile extends TableImpl<StoreFileRecord> {
 
-    private static final long serialVersionUID = 1450905624;
+    private static final long serialVersionUID = 1504819849;
 
     /**
      * The reference instance of <code>qzy_file_store.store_file</code>
@@ -67,12 +67,12 @@ public class StoreFile extends TableImpl<StoreFileRecord> {
     /**
      * The column <code>qzy_file_store.store_file.store_bucket</code>.
      */
-    public final TableField<StoreFileRecord, Integer> STORE_BUCKET = createField("store_bucket", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<StoreFileRecord, String> STORE_BUCKET = createField("store_bucket", org.jooq.impl.SQLDataType.VARCHAR.length(128).nullable(false), this, "");
 
     /**
      * The column <code>qzy_file_store.store_file.store_key</code>.
      */
-    public final TableField<StoreFileRecord, Integer> STORE_KEY = createField("store_key", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<StoreFileRecord, String> STORE_KEY = createField("store_key", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
 
     /**
      * The column <code>qzy_file_store.store_file.create_time</code>.

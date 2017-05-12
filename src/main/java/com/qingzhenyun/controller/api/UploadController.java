@@ -31,7 +31,7 @@ public class UploadController {
         putPolicy.setOverwrite(1);
         putPolicy.setCallbackUrl(DEFAULT_CALLBACK_URL);
         putPolicy.setCallbackBody("size=$(fsize)&hash=$(hash)&key=$(key)&mimeType=$(mimeType)&ip=$(ip)&avinfo=$(avinfo)&bucket=$(bucket)&url=$(url)&userId="
-                + user.getId().toString());
+                + user.getId().toString() + "&fileName=@qzyfilestart$(fname)@qzyfileend");
         putPolicy.setDeadline(Long.toString(System.currentTimeMillis() + 1000 * 60 * 60 * 24));
         putPolicy.setSaveKey("user-upload/$(hash)");
         putPolicy.setScope(BUCKET);

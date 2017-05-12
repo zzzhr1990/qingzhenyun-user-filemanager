@@ -4,6 +4,7 @@ import com.qingzhenyun.autoconfig.wcs.WcsApi;
 import com.qingzhenyun.wcs.entity.PutPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.HashMap;
 
@@ -17,6 +18,7 @@ public class UploadController {
     private static final String DEFAULT_CALLBACK_URL = "http://callback.kukuku.cc/callback/upload/wsUpload";
     private static final String DEFAULT_RETURN_BODY = "{\"key\": $(key),\"mimeType\": $(mimeType),\"size\": $(fsize),\"fname\": $(fname), \"hash\": $(etag), \"avinfo\": $(avinfo), \"imageInfo\": $(imageInfo)}";
 
+    @RequestMapping(value = "/token", method = RequestMethod.GET)
     public HashMap<String, String> getToken() {
         HashMap<String, String> res = new HashMap<>();
         PutPolicy putPolicy = new PutPolicy(); // 上传策略

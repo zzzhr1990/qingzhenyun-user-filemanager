@@ -21,5 +21,11 @@ spring:
       sql-dialect: mysql
 server:
   port: 8090
+wcs:
+  conf:
+    ak: "0a3836b4ef298e7dc9fc5da291252fc4ac3e0c7f"
+    sk: "da17a6ffaeab4ca89ce7275d9a8060206cb3de8e"
+    mdomain: "qietv.up21.v1.wcsapi.com"
+    udomain: "upload-vod-v1.qiecdn.com"
 #    password: "dkmepNSo)W@9_="
 #    username: "cdb_outerroot"

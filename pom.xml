@@ -24,6 +24,11 @@
 		<java.version>1.8</java.version>
 		<!--数据库迁移所用的参数 -->
 		<db.schema>qzy_file_store</db.schema>
+		<db.url>jdbc:mysql://591145eb488e5.gz.cdb.myqcloud.com:4513/qzy_task_manager?useSSL=false&amp;useServerPrepStmts=true&amp;cachePrepStmts=true&amp;prepStmtCacheSize=25&amp;prepStmtCacheSqlLimit=256&amp;nullNamePatternMatchesAll=true</db.url>
+		<db.username>cdb_outerroot</db.username>
+		<db.password><![CDATA[dkmepNSo)W@9_=]]></db.password>
+		<!--腾讯云用 -->
+		<db.schema>qzy_file_store</db.schema>
 		<db.url>jdbc:mysql://10.66.236.132:3306/qzy_file_store?useSSL=false&amp;useServerPrepStmts=true&amp;cachePrepStmts=true&amp;prepStmtCacheSize=25&amp;prepStmtCacheSqlLimit=256&amp;nullNamePatternMatchesAll=true</db.url>
 		<db.username>root</db.username>
 		<db.password><![CDATA[y9e39*@)UJ=1]]></db.password>
@@ -39,6 +44,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

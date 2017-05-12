@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.UUID;
@@ -27,8 +30,16 @@ public class WcsCallbackController {
         res.put("resId", UUID.randomUUID().toString());
 
         try (ServletInputStream inputStream = httpServletRequest.getInputStream()) {
-            String str = process(inputStream, Charset.forName("UTF-8"));
-            res.put("response", str);
+            if (inputStream.isFinished()) {
+                res.put("finished", "true");
+            } else {
+                res.put("finished", "false");
+                BufferedReader bufferedReader
+                        = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+                res.put("line", bufferedReader.readLine());
+            }
+            //String str = process(inputStream, Charset.forName("UTF-8"));
+            //res.put("response", str);
         } catch (IOException ignore) {
 
         }

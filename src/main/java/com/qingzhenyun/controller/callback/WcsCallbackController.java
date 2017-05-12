@@ -20,10 +20,9 @@ import java.util.UUID;
  * Wcs
  * Created by guna on 2017/5/12.
  */
-@Controller
+@RestController
 @RequestMapping("/api/callback/ws")
 public class WcsCallbackController {
-    @ResponseBody
     @RequestMapping("/post")
     public HashMap<String, String> upload(HttpServletRequest httpServletRequest) {
         HashMap<String, String> res = new HashMap<>();

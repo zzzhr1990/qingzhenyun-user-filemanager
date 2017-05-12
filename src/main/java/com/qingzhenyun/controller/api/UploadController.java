@@ -17,8 +17,8 @@ import java.util.HashMap;
 @RestController
 @RequestMapping("/api/upload")
 public class UploadController {
-    private static final String BUCKET = "dy_zhongying_wcs-test001";
-    private static final String DEFAULT_CALLBACK_URL = "http://callback.kukuku.cc/callback/upload/wsUpload";
+    private static final String BUCKET = "other-storage";
+    private static final String DEFAULT_CALLBACK_URL = "http://tencent2.qiecdn.cm:8090//api/callback/ws/post";
     private static final String DEFAULT_RETURN_BODY = "{\"key\": $(key),\"mimeType\": $(mimeType),\"size\": $(fsize),\"fname\": $(fname), \"hash\": $(etag), \"avinfo\": $(avinfo), \"imageInfo\": $(imageInfo)}";
 
     @RequestMapping(value = "/token", method = RequestMethod.GET)

@@ -1,4 +1,4 @@
-package com.qingzhenyun.controller.callback;
+package com.qingzhenyun.controller.api;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ import java.util.UUID;
  * Wcs
  * Created by guna on 2017/5/12.
  */
-@Controller
+@RestController
 @RequestMapping("/api/callback/ws")
 public class WcsCallbackController {
     @RequestMapping("/post")

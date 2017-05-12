@@ -66,9 +66,13 @@ public class DirectoryOperation {
     }
 
     public UserFile getDirectoryByName(String directoryName, String parentId, Integer userId) {
-        return dslContext.fetchOne(Tables.USER_FILE, Tables.USER_FILE.FILE_NAME.eq(directoryName)
+        UserFileRecord userFileRecord = dslContext.fetchOne(Tables.USER_FILE, Tables.USER_FILE.FILE_NAME.eq(directoryName)
                 .and(Tables.USER_FILE.USER_ID.eq(userId))
-                .and(Tables.USER_FILE.PARENT_ID.eq(parentId))).into(UserFile.class);
+                .and(Tables.USER_FILE.PARENT_ID.eq(parentId)));
+        if (userFileRecord == null) {
+            return null;
+        }
+        return userFileRecord.into(UserFile.class);
     }
 
     @Autowired

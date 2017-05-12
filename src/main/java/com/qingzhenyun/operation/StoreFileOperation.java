@@ -33,7 +33,11 @@ public class StoreFileOperation {
     }
 
     public StoreFile getStoreFile(String hash) {
-        return dslContext.fetchOne(Tables.STORE_FILE, Tables.STORE_FILE.HASH.eq(hash)).into(StoreFile.class);
+        StoreFileRecord storeFileRecord = dslContext.fetchOne(Tables.STORE_FILE, Tables.STORE_FILE.HASH.eq(hash));
+        if (storeFileRecord == null) {
+            return null;
+        }
+        return storeFileRecord.into(StoreFile.class);
     }
 
     @Autowired

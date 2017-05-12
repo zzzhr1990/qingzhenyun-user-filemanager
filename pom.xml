@@ -141,7 +141,7 @@
 					<!-- Generator parameters -->
 					<generator>
 						<database>
-							<name>org.jooq.util.mysql.MySQLDatabase</name>
+							<name>org.jooq.com.qingzhenyun.util.mysql.MySQLDatabase</name>
 							<includes>.*</includes>
 							<inputSchema>${db.schema}</inputSchema>
 							<forcedTypes>

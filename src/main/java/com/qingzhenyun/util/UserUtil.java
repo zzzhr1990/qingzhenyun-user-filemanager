@@ -1,4 +1,4 @@
-package util;
+package com.qingzhenyun.util;
 
 import com.qingzhenyun.exception.ApiException;
 import com.qingzhenyun.jooq.common.generated.Tables;
@@ -10,13 +10,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 /**
  * HOO
  * Created by guna on 2017/5/13.
  */
-@Repository
+@Component
 @Slf4j
 public class UserUtil implements ApplicationContextAware {
 

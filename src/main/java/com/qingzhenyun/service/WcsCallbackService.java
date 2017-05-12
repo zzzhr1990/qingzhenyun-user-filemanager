@@ -19,10 +19,15 @@ public class WcsCallbackService {
         for (String str : keyPair) {
             int s = str.indexOf('=');
             if (s > -1) {
+                /*
                 String key = new String(Base64.getUrlDecoder()
                         .decode(str.substring(0, s)), Charsets.UTF_8);
                 String value = new String(Base64.getUrlDecoder()
                         .decode(str.substring(s + 1)), Charsets.UTF_8);
+                result.put(key, value);
+                */
+                String key = str.substring(0, s);
+                String value = str.substring(s + 1);
                 result.put(key, value);
             }
         }

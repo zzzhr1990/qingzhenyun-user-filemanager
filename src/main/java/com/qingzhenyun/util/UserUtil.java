@@ -11,10 +11,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-/**
- * HOO
- * Created by guna on 2017/5/13.
- */
 @Component
 @Slf4j
 public class UserUtil implements ApplicationContextAware {

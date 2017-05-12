@@ -3,11 +3,11 @@ package com.qingzhenyun.controller.api;
 import com.qingzhenyun.autoconfig.wcs.WcsApi;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.User;
 import com.qingzhenyun.wcs.entity.PutPolicy;
+import com.qingzhenyun.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.qingzhenyun.util.UserUtil;
 
 import java.util.HashMap;
 

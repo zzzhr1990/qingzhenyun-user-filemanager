@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 
 /**
- * UC
+ * UC yo
  * Created by guna on 2017/5/12.
  */
+
 @RestController
 @RequestMapping("/api/upload")
 public class UploadController {

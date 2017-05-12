@@ -22,9 +22,10 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-    private static final long serialVersionUID = -1776869586;
+    private static final long serialVersionUID = -1927755558;
 
     private Integer id;
+    private Integer status;
     private String  username;
     private String  password;
     private String  salt;
@@ -44,6 +45,7 @@ public class User implements Serializable {
 
     public User(User value) {
         this.id = value.id;
+        this.status = value.status;
         this.username = value.username;
         this.password = value.password;
         this.salt = value.salt;
@@ -61,23 +63,25 @@ public class User implements Serializable {
     }
 
     public User(
-        Integer id,
-        String  username,
-        String  password,
-        String  salt,
-        Integer level,
-        String  email,
-        String  mobileContryCode,
-        String  mobileNumber,
-        Long    usedSize,
-        Long    totalSize,
-        Integer usedBandwidth,
-        Integer totalBandwidth,
-        Long    createTime,
-        Long    lastActivateTime,
-        String  lastActivateIp
+            Integer id,
+            Integer status,
+            String  username,
+            String  password,
+            String  salt,
+            Integer level,
+            String  email,
+            String  mobileContryCode,
+            String  mobileNumber,
+            Long    usedSize,
+            Long    totalSize,
+            Integer usedBandwidth,
+            Integer totalBandwidth,
+            Long    createTime,
+            Long    lastActivateTime,
+            String  lastActivateIp
     ) {
         this.id = id;
+        this.status = status;
         this.username = username;
         this.password = password;
         this.salt = salt;
@@ -100,6 +104,14 @@ public class User implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getUsername() {
@@ -219,6 +231,7 @@ public class User implements Serializable {
         StringBuilder sb = new StringBuilder("User (");
 
         sb.append(id);
+        sb.append(", ").append(status);
         sb.append(", ").append(username);
         sb.append(", ").append(password);
         sb.append(", ").append(salt);

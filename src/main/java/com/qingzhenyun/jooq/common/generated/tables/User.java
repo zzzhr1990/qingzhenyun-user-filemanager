@@ -35,7 +35,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = 1236389533;
+    private static final long serialVersionUID = -961363181;
 
     /**
      * The reference instance of <code>qzy_file_store.user</code>
@@ -54,6 +54,11 @@ public class User extends TableImpl<UserRecord> {
      * The column <code>qzy_file_store.user.id</code>.
      */
     public final TableField<UserRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+
+    /**
+     * The column <code>qzy_file_store.user.status</code>.
+     */
+    public final TableField<UserRecord, Integer> STATUS = createField("status", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
      * The column <code>qzy_file_store.user.username</code>.

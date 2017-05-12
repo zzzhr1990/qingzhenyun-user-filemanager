@@ -1,5 +1,7 @@
 package com.qingzhenyun.controller.api;
 
+import com.qingzhenyun.service.WcsCallbackService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,24 +27,13 @@ import java.util.UUID;
 public class WcsCallbackController {
     @RequestMapping("/post")
     public HashMap<String, String> upload(HttpServletRequest httpServletRequest, String callbackBody) {
-        HashMap<String, String> res = new HashMap<>();
-        res.put("data", callbackBody);
-        res.put("method", httpServletRequest.getMethod());
-        res.put("uri", httpServletRequest.getRequestURL().toString());
-        return res;
+        return wcsCallbackService.onSimpleCallback(callbackBody);
     }
 
-    private String process(InputStream in, Charset charset) {
-        byte[] buf = new byte[1024];
-        StringBuilder sb = new StringBuilder();
-        int len = 0;
-        try {
-            while ((len = in.read(buf)) != -1) {
-                sb.append(new String(buf, 0, len, charset));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
+    @Autowired
+    public void setWcsCallbackService(WcsCallbackService wcsCallbackService) {
+        this.wcsCallbackService = wcsCallbackService;
     }
+
+    private WcsCallbackService wcsCallbackService;
 }

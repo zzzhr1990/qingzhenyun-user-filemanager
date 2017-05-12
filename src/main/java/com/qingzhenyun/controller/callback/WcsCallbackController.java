@@ -28,6 +28,7 @@ public class WcsCallbackController {
 
         try (ServletInputStream inputStream = httpServletRequest.getInputStream()) {
             String str = process(inputStream, Charset.forName("UTF-8"));
+            res.put("response", str);
         } catch (IOException ignore) {
 
         }

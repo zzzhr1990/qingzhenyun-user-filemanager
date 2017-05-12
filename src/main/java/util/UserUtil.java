@@ -3,6 +3,7 @@ package util;
 import com.qingzhenyun.exception.ApiException;
 import com.qingzhenyun.jooq.common.generated.Tables;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.User;
+import lombok.extern.slf4j.Slf4j;
 import org.jooq.DSLContext;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
  * Created by guna on 2017/5/13.
  */
 @Component
+@Slf4j
 public class UserUtil implements ApplicationContextAware {
 
     public static User getUserInSession() {
@@ -37,7 +39,9 @@ public class UserUtil implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        log.info("INIT_DSL_CONFIG");
         UserUtil.dslContext = applicationContext.getBean(DSLContext.class);
+        log.info("INIT RES {}", dslContext == null);
     }
 
     private static DSLContext dslContext;

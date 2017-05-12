@@ -5,6 +5,7 @@ import com.qingzhenyun.wcs.entity.PutPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 
@@ -12,6 +13,7 @@ import java.util.HashMap;
  * UC
  * Created by guna on 2017/5/12.
  */
+@RestController
 @RequestMapping("/api/upload")
 public class UploadController {
     private static final String BUCKET = "dy_zhongying_wcs-test001";

@@ -46,6 +46,7 @@ public class DirectoryOperation {
             userFileRecord.setInternal(internal);
             userFileRecord.setParentId(parentId);
             userFileRecord.setSize(0L);
+            userFileRecord.setUserId(userId);
             userFileRecord.setStatus(FileConst.FILE_STATUS_NORMAL);
             userFileRecord.store();
             file = userFileRecord.into(UserFile.class);

@@ -20,30 +20,15 @@ import java.util.UUID;
  * Wcs
  * Created by guna on 2017/5/12.
  */
-@RestController
+@Controller
 @RequestMapping("/api/callback/ws")
 public class WcsCallbackController {
     @RequestMapping("/post")
-    public HashMap<String, String> upload(HttpServletRequest httpServletRequest) {
+    public HashMap<String, String> upload(HttpServletRequest httpServletRequest, String callbackBody) {
         HashMap<String, String> res = new HashMap<>();
-        res.put("resId", UUID.randomUUID().toString());
+        res.put("data", callbackBody);
         res.put("method", httpServletRequest.getMethod());
         res.put("uri", httpServletRequest.getRequestURL().toString());
-
-        try (ServletInputStream inputStream = httpServletRequest.getInputStream()) {
-            if (inputStream.isFinished()) {
-                res.put("finished", "true");
-            } else {
-                res.put("finished", "false");
-            }
-            BufferedReader bufferedReader
-                    = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
-            res.put("line", bufferedReader.readLine());
-            //String str = process(inputStream, Charset.forName("UTF-8"));
-            //res.put("response", str);
-        } catch (IOException ignore) {
-            res.put("error", ignore.toString());
-        }
         return res;
     }
 

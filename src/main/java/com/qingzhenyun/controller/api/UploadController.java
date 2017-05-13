@@ -30,7 +30,7 @@ public class UploadController {
         PutPolicy putPolicy = new PutPolicy(); // 上传策略
         putPolicy.setOverwrite(1);
         putPolicy.setCallbackUrl(DEFAULT_CALLBACK_URL);
-        putPolicy.setCallbackBody("size=$(fsize)&hash=$(hash)&key=$(key)&mimeType=$(mimeType)&ip=$(ip)&avinfo=$(avinfo)&bucket=$(bucket)&url=$(url)&userId="
+        putPolicy.setCallbackBody("size=$(fsize)&hash=$(hash)&key=$(key)&mimeType=$(mimeType)&ip=$(ip)&avinfo=$(avinfo)&bucket=$(bucket)&url=@qzyurlstart$(url)@qzyurlend&userId="
                 + user.getId().toString() + "&fileName=@qzyfilestart$(fname)@qzyfileend");
         putPolicy.setDeadline(Long.toString(System.currentTimeMillis() + 1000 * 60 * 60 * 24));
         putPolicy.setSaveKey("user-upload/$(hash)");
@@ -38,6 +38,7 @@ public class UploadController {
         String uploadToken = wcsApi.getUploadToken(putPolicy);
         res.put("token", uploadToken);
         res.put("uploadUrl", wcsApi.getUploadUrl());
+        //Send MQ..
         return res;
     }
 

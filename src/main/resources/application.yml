@@ -19,6 +19,11 @@ spring:
 #    password: ""
   jooq:
       sql-dialect: mysql
+  rabbitmq:
+    host: "123.59.101.219"
+    port: 5672
+    password: "dpngMibiZtRWzi7ImCsTzXxCHLyt159"
+    username: "java"
 server:
   port: 8090
 wcs:

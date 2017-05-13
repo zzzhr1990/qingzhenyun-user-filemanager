@@ -63,6 +63,14 @@ public class WcsCallbackService {
         if (ed > st) {
             oriName = returnBody.substring("@qzyfilestart".length() + st, ed);
         }
+        String url = "";
+        int ust = returnBody.indexOf("@qzyurlstart");
+        int ued = returnBody.lastIndexOf("@qzyurlend");
+        if (ued > ust) {
+            url = returnBody.substring("@qzyurlstart".length() + st, ed);
+        }
+
+        String urlDecode = new String(Base64.getUrlDecoder().decode(url), Charsets.UTF_8);
         result.put("filename", oriName);
         //Store File
         StoreFile storeFile = storeFileOperation.createOrGetStoreFile(hash, size, StoreFileConst.STORE_TYPE_WS, bucket, key, mimeType);
@@ -71,8 +79,8 @@ public class WcsCallbackService {
         // now,We save file..
 
         UserFile fileUntilFileNameNotDuplicate = userFileOperation.createFileUntilFileNameNotDuplicate(oriName, storeFile.getHash(), storeFile.getSize(), torrentDirectory.getId(), userId, mimeType);
-
         result.put("storeFilename", fileUntilFileNameNotDuplicate.getFileName());
+        offlineTaskService.dispatchTorrentAdded(bucket, key, urlDecode, hash);
         return result;
     }
 
@@ -96,4 +104,11 @@ public class WcsCallbackService {
     }
 
     private UserFileOperation userFileOperation;
+
+    @Autowired
+    public void setOfflineTaskService(OfflineTaskService offlineTaskService) {
+        this.offlineTaskService = offlineTaskService;
+    }
+
+    private OfflineTaskService offlineTaskService;
 }

@@ -34,7 +34,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserFile extends TableImpl<UserFileRecord> {
 
-    private static final long serialVersionUID = 1833009118;
+    private static final long serialVersionUID = -686928736;
 
     /**
      * The reference instance of <code>qzy_file_store.user_file</code>
@@ -57,12 +57,17 @@ public class UserFile extends TableImpl<UserFileRecord> {
     /**
      * The column <code>qzy_file_store.user_file.file_id</code>.
      */
-    public final TableField<UserFileRecord, String> FILE_ID = createField("file_id", org.jooq.impl.SQLDataType.VARCHAR.length(64).nullable(false), this, "");
+    public final TableField<UserFileRecord, String> FILE_ID = createField("file_id", org.jooq.impl.SQLDataType.VARCHAR.length(64), this, "");
 
     /**
      * The column <code>qzy_file_store.user_file.size</code>.
      */
     public final TableField<UserFileRecord, Long> SIZE = createField("size", org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
+
+    /**
+     * The column <code>qzy_file_store.user_file.mime</code>.
+     */
+    public final TableField<UserFileRecord, String> MIME = createField("mime", org.jooq.impl.SQLDataType.VARCHAR.length(64), this, "");
 
     /**
      * The column <code>qzy_file_store.user_file.is_directory</code>.

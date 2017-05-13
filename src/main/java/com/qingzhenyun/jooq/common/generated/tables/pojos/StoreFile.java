@@ -51,15 +51,15 @@ public class StoreFile implements Serializable {
     }
 
     public StoreFile(
-            String  hash,
-            Long    size,
+            String hash,
+            Long size,
             Integer storeType,
             String storeBucket,
             String storeKey,
-            Long    createTime,
-            String  mime,
+            Long createTime,
+            String mime,
             Integer preview,
-            String  previewId,
+            String previewId,
             Integer previewType
     ) {
         this.hash = hash;

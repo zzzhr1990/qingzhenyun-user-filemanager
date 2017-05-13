@@ -22,11 +22,12 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserFile implements Serializable {
 
-    private static final long serialVersionUID = -161541557;
+    private static final long serialVersionUID = -1472040051;
 
     private String  id;
     private String  fileId;
     private Long    size;
+    private String mime;
     private Integer isDirectory;
     private Integer userId;
     private Integer status;
@@ -42,6 +43,7 @@ public class UserFile implements Serializable {
         this.id = value.id;
         this.fileId = value.fileId;
         this.size = value.size;
+        this.mime = value.mime;
         this.isDirectory = value.isDirectory;
         this.userId = value.userId;
         this.status = value.status;
@@ -53,21 +55,23 @@ public class UserFile implements Serializable {
     }
 
     public UserFile(
-        String  id,
-        String  fileId,
-        Long    size,
-        Integer isDirectory,
-        Integer userId,
-        Integer status,
-        Long    createTime,
-        Long    editTime,
-        String  parentId,
-        String  fileName,
-        Integer internal
+            String  id,
+            String  fileId,
+            Long    size,
+            String mime,
+            Integer isDirectory,
+            Integer userId,
+            Integer status,
+            Long    createTime,
+            Long    editTime,
+            String  parentId,
+            String  fileName,
+            Integer internal
     ) {
         this.id = id;
         this.fileId = fileId;
         this.size = size;
+        this.mime = mime;
         this.isDirectory = isDirectory;
         this.userId = userId;
         this.status = status;
@@ -100,6 +104,14 @@ public class UserFile implements Serializable {
 
     public void setSize(Long size) {
         this.size = size;
+    }
+
+    public String getMime() {
+        return this.mime;
+    }
+
+    public void setMime(String mime) {
+        this.mime = mime;
     }
 
     public Integer getIsDirectory() {
@@ -173,6 +185,7 @@ public class UserFile implements Serializable {
         sb.append(id);
         sb.append(", ").append(fileId);
         sb.append(", ").append(size);
+        sb.append(", ").append(mime);
         sb.append(", ").append(isDirectory);
         sb.append(", ").append(userId);
         sb.append(", ").append(status);

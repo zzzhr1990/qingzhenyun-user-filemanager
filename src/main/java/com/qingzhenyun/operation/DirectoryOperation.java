@@ -1,10 +1,11 @@
 package com.qingzhenyun.operation;
 
 import com.qingzhenyun.constans.DirectoryConst;
-import com.qingzhenyun.constans.FileConst;
+import com.qingzhenyun.constans.CommonFileConst;
 import com.qingzhenyun.jooq.common.generated.Tables;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.UserFile;
 import com.qingzhenyun.jooq.common.generated.tables.records.UserFileRecord;
+import com.qingzhenyun.service.AbstractDslService;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,15 +17,15 @@ import java.util.UUID;
  * Created by guna on 2017/5/13.
  */
 @Service
-public class DirectoryOperation {
+public class DirectoryOperation extends BaseFileOperation {
 
     public UserFile createOrGetDirectory(String directoryName, Integer userId) {
-        return createOrGetDirectory(directoryName, DirectoryConst.ROOT_DIRECTORY_PARENT_ID, userId, 0);
+        return createOrGetDirectory(directoryName, DirectoryConst.ROOT_DIRECTORY_PARENT_ID, userId, DirectoryConst.NORMAL_DIRECTORY);
 
     }
 
     public UserFile createOrGetDirectory(String directoryName, String parentId, Integer userId) {
-        return createOrGetDirectory(directoryName, parentId, userId, 0);
+        return createOrGetDirectory(directoryName, parentId, userId, DirectoryConst.NORMAL_DIRECTORY);
 
     }
 
@@ -36,20 +37,8 @@ public class DirectoryOperation {
     public UserFile createOrGetDirectory(String directoryName, String parentId, Integer userId, Integer internal) {
         UserFile file = getDirectoryByName(directoryName, parentId, userId);
         if (file == null) {
-            UserFileRecord userFileRecord = dslContext.newRecord(Tables.USER_FILE);
-            Long current = System.currentTimeMillis();
-            userFileRecord.setCreateTime(current);
-            userFileRecord.setEditTime(current);
-            userFileRecord.setId(UUID.randomUUID().toString());
-            userFileRecord.setIsDirectory(1);
-            userFileRecord.setFileName(directoryName);
-            userFileRecord.setInternal(internal);
-            userFileRecord.setParentId(parentId);
-            userFileRecord.setSize(0L);
-            userFileRecord.setUserId(userId);
-            userFileRecord.setStatus(FileConst.FILE_STATUS_NORMAL);
-            userFileRecord.store();
-            file = userFileRecord.into(UserFile.class);
+            file = createUserFile(directoryName, CommonFileConst.DIRECTORY,
+                    0L, parentId, userId, internal);
         }
         return file;
     }
@@ -67,19 +56,10 @@ public class DirectoryOperation {
     }
 
     public UserFile getDirectoryByName(String directoryName, String parentId, Integer userId) {
-        UserFileRecord userFileRecord = dslContext.fetchOne(Tables.USER_FILE, Tables.USER_FILE.FILE_NAME.eq(directoryName)
-                .and(Tables.USER_FILE.USER_ID.eq(userId))
-                .and(Tables.USER_FILE.PARENT_ID.eq(parentId)));
-        if (userFileRecord == null) {
-            return null;
-        }
-        return userFileRecord.into(UserFile.class);
+        return super.getUserFileByName(directoryName, parentId, userId);
     }
 
-    @Autowired
-    public void setDslContext(DSLContext dslContext) {
-        this.dslContext = dslContext;
+    public UserFile getDirectoryById(String directoryId, Integer userId) {
+        return super.getUserFileById(directoryId, userId);
     }
-
-    private DSLContext dslContext;
 }

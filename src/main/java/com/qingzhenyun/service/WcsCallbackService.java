@@ -9,6 +9,7 @@ import com.qingzhenyun.jooq.common.generated.tables.pojos.StoreFile;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.UserFile;
 import com.qingzhenyun.operation.DirectoryOperation;
 import com.qingzhenyun.operation.StoreFileOperation;
+import com.qingzhenyun.operation.UserFileOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -62,12 +63,16 @@ public class WcsCallbackService {
         if (ed > st) {
             oriName = returnBody.substring("@qzyfilestart".length() + st, ed);
         }
-        result.put("fileName", oriName);
+        result.put("filename", oriName);
         //Store File
         StoreFile storeFile = storeFileOperation.createOrGetStoreFile(hash, size, StoreFileConst.STORE_TYPE_WS, bucket, key, mimeType);
         UserFile torrentDirectory = directoryOperation.createOrGetDirectory(
-                DirectoryConst.OFFLINE_TORRENT_DIRECTORY_NAME, userId);
+                DirectoryConst.OFFLINE_TORRENT_DIRECTORY_NAME, userId, DirectoryConst.INTERNAL_DIRECTORY);
+        // now,We save file..
 
+        UserFile fileUntilFileNameNotDuplicate = userFileOperation.createFileUntilFileNameNotDuplicate(oriName, storeFile.getHash(), storeFile.getSize(), torrentDirectory.getId(), userId, mimeType);
+
+        result.put("storeFilename", fileUntilFileNameNotDuplicate.getFileName());
         return result;
     }
 
@@ -84,4 +89,11 @@ public class WcsCallbackService {
     }
 
     private StoreFileOperation storeFileOperation;
+
+    @Autowired
+    public void setUserFileOperation(UserFileOperation userFileOperation) {
+        this.userFileOperation = userFileOperation;
+    }
+
+    private UserFileOperation userFileOperation;
 }

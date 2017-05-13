@@ -34,7 +34,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class StoreFile extends TableImpl<StoreFileRecord> {
 
-    private static final long serialVersionUID = 1504819849;
+    private static final long serialVersionUID = -1614207862;
 
     /**
      * The reference instance of <code>qzy_file_store.store_file</code>
@@ -87,17 +87,17 @@ public class StoreFile extends TableImpl<StoreFileRecord> {
     /**
      * The column <code>qzy_file_store.store_file.preview</code>.
      */
-    public final TableField<StoreFileRecord, Integer> PREVIEW = createField("preview", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<StoreFileRecord, Integer> PREVIEW = createField("preview", org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>qzy_file_store.store_file.preview_id</code>.
      */
-    public final TableField<StoreFileRecord, String> PREVIEW_ID = createField("preview_id", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
+    public final TableField<StoreFileRecord, String> PREVIEW_ID = createField("preview_id", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * The column <code>qzy_file_store.store_file.preview_type</code>.
      */
-    public final TableField<StoreFileRecord, Integer> PREVIEW_TYPE = createField("preview_type", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<StoreFileRecord, Integer> PREVIEW_TYPE = createField("preview_type", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * Create a <code>qzy_file_store.store_file</code> table reference

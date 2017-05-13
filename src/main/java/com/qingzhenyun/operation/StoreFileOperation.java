@@ -3,15 +3,17 @@ package com.qingzhenyun.operation;
 import com.qingzhenyun.jooq.common.generated.Tables;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.StoreFile;
 import com.qingzhenyun.jooq.common.generated.tables.records.StoreFileRecord;
+import com.qingzhenyun.service.AbstractDslService;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * Hoho
  * Created by guna on 2017/5/13.
  */
 @Service
-public class StoreFileOperation {
+public class StoreFileOperation extends AbstractDslService {
     public StoreFile createOrGetStoreFile(String hash, Long size,
                                           Integer storeType, String bucket, String key, String mime) {
         StoreFile file = getStoreFile(hash);
@@ -40,10 +42,5 @@ public class StoreFileOperation {
         return storeFileRecord.into(StoreFile.class);
     }
 
-    @Autowired
-    public void setDslContext(DSLContext dslContext) {
-        this.dslContext = dslContext;
-    }
 
-    private DSLContext dslContext;
 }

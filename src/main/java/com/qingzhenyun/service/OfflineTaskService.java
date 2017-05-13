@@ -15,13 +15,14 @@ import java.util.HashMap;
 @Service
 public class OfflineTaskService {
     @Async
-    public void dispatchTorrentAdded(String bucket, String key, String url, String hash) {
+    public void dispatchTorrentAdded(String bucket, String key, String url, String hash, String storeFileId) {
         HashMap<String, String> h = new HashMap<>();
         h.put("bucket", bucket);
         h.put("key", key);
         h.put("url", url);
         h.put("hash", hash);
         h.put("type", "torrent");
+        h.put("storeFileId", storeFileId);
         rabbitMessagingTemplate.convertAndSend(MqConst.OFFLINE_EXCHANGE, MqConst.OFFLINE_ADD_ROUTING_KEY, h);
     }
 

@@ -83,7 +83,7 @@ public class WcsCallbackService {
 
         UserFile fileUntilFileNameNotDuplicate = userFileOperation.createFileUntilFileNameNotDuplicate(oriName, storeFile.getHash(), storeFile.getSize(), torrentDirectory.getId(), userId, mimeType);
         result.put("storeFilename", fileUntilFileNameNotDuplicate.getFileName());
-        offlineTaskService.dispatchTorrentAdded(bucket, key, urlDecode, hash);
+        offlineTaskService.dispatchTorrentAdded(bucket, key, urlDecode, hash, storeFile.getHash());
         return result;
     }
 

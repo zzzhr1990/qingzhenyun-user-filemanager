@@ -1,4 +1,4 @@
-package com.qingzhenyun.autoconfig.wcs;
+package com.qingzhenyun.config.wcs;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

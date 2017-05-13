@@ -1,4 +1,4 @@
-package com.qingzhenyun.autoconfig.wcs;
+package com.qingzhenyun.config.wcs;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

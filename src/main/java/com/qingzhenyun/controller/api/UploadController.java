@@ -1,6 +1,6 @@
 package com.qingzhenyun.controller.api;
 
-import com.qingzhenyun.autoconfig.wcs.WcsApi;
+import com.qingzhenyun.config.wcs.WcsApi;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.User;
 import com.qingzhenyun.wcs.entity.PutPolicy;
 import com.qingzhenyun.util.UserUtil;

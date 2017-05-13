@@ -1,4 +1,4 @@
-package com.qingzhenyun.autoconfig.wcs;
+package com.qingzhenyun.config.wcs;
 
 import com.qingzhenyun.wcs.entity.PutPolicy;
 import com.qingzhenyun.wcs.util.TokenUtil;

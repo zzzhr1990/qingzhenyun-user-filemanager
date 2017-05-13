@@ -21,7 +21,7 @@ spring:
       sql-dialect: mysql
   freemarker:
     settings:
-      ExceptionOnMissingTemplate: true
+      Exception_On_Missing_Template: true
 server:
   port: 8090
 wcs:

@@ -15,7 +15,7 @@ import java.util.HashMap;
 @Service
 public class OfflineTaskService {
     @Async
-    public void dispatchTorrentAdded(String bucket, String key, String url, String hash, String storeFileId) {
+    public void dispatchTorrentAdded(String bucket, String key, String url, String hash, String storeFileId, Integer userId) {
         HashMap<String, String> h = new HashMap<>();
         h.put("bucket", bucket);
         h.put("key", key);
@@ -23,6 +23,7 @@ public class OfflineTaskService {
         h.put("hash", hash);
         h.put("type", "torrent");
         h.put("storeFileId", storeFileId);
+        h.put("userId", userId.toString());
         rabbitMessagingTemplate.convertAndSend(MqConst.OFFLINE_EXCHANGE, MqConst.OFFLINE_ADD_ROUTING_KEY, h);
     }
 

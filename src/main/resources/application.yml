@@ -22,7 +22,6 @@ spring:
   freemarker:
     settings:
       ExceptionOnMissingTemplate: true
-      exceptiononmissingtemplate: true
 server:
   port: 8090
 wcs:

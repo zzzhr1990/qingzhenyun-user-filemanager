@@ -62,6 +62,9 @@ public class UserFileOperation extends BaseFileOperation {
     }
 
     private String appendText(String fileName, int count) {
+        if (fileName.length() > 60) {
+            return fileName.substring(0, 60) + "-" + UUID.randomUUID().toString();
+        }
         if (count < 3) {
             return fileName + "(1)";
         } else {

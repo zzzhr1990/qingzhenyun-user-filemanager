@@ -19,6 +19,10 @@ spring:
 #    password: ""
   jooq:
       sql-dialect: mysql
+  freemarker:
+    settings:
+      ExceptionOnMissingTemplate: true
+      exceptiononmissingtemplate: true
 server:
   port: 8090
 wcs:

@@ -10,6 +10,7 @@ import com.qingzhenyun.jooq.common.generated.tables.pojos.UserFile;
 import com.qingzhenyun.operation.DirectoryOperation;
 import com.qingzhenyun.operation.StoreFileOperation;
 import com.qingzhenyun.operation.UserFileOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import java.util.HashMap;
  * S
  * Created by guna on 2017/5/13.
  */
+@Slf4j
 @Service
 public class WcsCallbackService {
     public HashMap<String, String> onSimpleCallback(String returnBody) {
@@ -69,6 +71,9 @@ public class WcsCallbackService {
         if (ued > ust) {
             url = returnBody.substring("@qzyurlstart".length() + st, ed);
         }
+
+        log.info(url);
+
 
         String urlDecode = new String(Base64.getUrlDecoder().decode(url), Charsets.UTF_8);
         result.put("filename", oriName);

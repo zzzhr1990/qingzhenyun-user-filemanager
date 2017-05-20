@@ -29,10 +29,11 @@ public class OfflineTaskService {
     }
 
     @Async
-    public void dispatchMagnetAdded(String url, Integer userId) {
+    public void dispatchMagnetAdded(String url, String infoHash, Integer userId) {
         HashMap<String, String> h = new HashMap<>();
         h.put("url", url);
-        h.put("hash", "mag-" + Hashing.md5().hashString(url, Charsets.UTF_8).toString());
+        h.put("infoHash", infoHash);
+        h.put("hash", "mag-" + infoHash);
         h.put("type", "magnet");
         h.put("userId", userId.toString());
         rabbitMessagingTemplate.convertAndSend(MqConst.OFFLINE_EXCHANGE, MqConst.OFFLINE_ADD_ROUTING_KEY, h);

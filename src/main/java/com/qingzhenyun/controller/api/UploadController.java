@@ -27,9 +27,7 @@ public class UploadController {
 
     @RequestMapping(value = "/token", method = RequestMethod.GET)
     public HashMap<String, String> getToken(Integer userId) {
-        if (userId == null) {
-            throw new ApiException(HttpStatus.BAD_REQUEST, "USER_ID_MISSING");
-        }
+
         HashMap<String, String> res = new HashMap<>();
         //User user = UserUtil.getUserInSession();
         PutPolicy putPolicy = new PutPolicy(); // 上传策略

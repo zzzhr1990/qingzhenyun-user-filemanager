@@ -6,6 +6,7 @@ import com.qingzhenyun.util.UserUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
@@ -21,9 +22,10 @@ import java.text.ParseException;
 @RequestMapping("/api/magnet")
 public class MagnetController {
 
-    @RequestMapping(value = "/add")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public boolean add(String url, Integer userId) {
         userId = UserUtil.ensureUserIdNotNull(userId);
+        url = UserUtil.ensureDataNotNull(url, "URL_COULD_NOT_BE_NULL");
         Magnet magnet = null;
         try {
             magnet = Magnet.parse(url);

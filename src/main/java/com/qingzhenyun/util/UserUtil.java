@@ -25,6 +25,13 @@ public class UserUtil implements ApplicationContextAware {
         }
         return userId;
     }
+
+    public static <T> T ensureDataNotNull(T data, String message) {
+        if (data == null) {
+            throw new ApiException(HttpStatus.BAD_REQUEST, "USER_ID_MISSING");
+        }
+        return data;
+    }
     public static User getUserInSession() {
         return getUserById(1);
     }

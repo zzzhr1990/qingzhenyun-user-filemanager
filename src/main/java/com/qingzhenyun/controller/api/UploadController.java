@@ -28,6 +28,7 @@ public class UploadController {
     @RequestMapping(value = "/token", method = RequestMethod.GET)
     public HashMap<String, String> getToken(Integer userId) {
 
+        userId = UserUtil.ensureUserIdNotNull(userId);
         HashMap<String, String> res = new HashMap<>();
         //User user = UserUtil.getUserInSession();
         PutPolicy putPolicy = new PutPolicy(); // 上传策略

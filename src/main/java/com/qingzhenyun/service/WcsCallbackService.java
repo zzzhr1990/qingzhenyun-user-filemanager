@@ -81,8 +81,14 @@ public class WcsCallbackService {
                 DirectoryConst.OFFLINE_TORRENT_DIRECTORY_NAME, userId, DirectoryConst.INTERNAL_DIRECTORY);
         // now,We save file..
 
-        UserFile fileUntilFileNameNotDuplicate = userFileOperation.createFileUntilFileNameNotDuplicate(oriName, storeFile.getHash(), storeFile.getSize(), torrentDirectory.getId(), userId, mimeType);
+        UserFile fileUntilFileNameNotDuplicate = userId > 0 ? userFileOperation.
+                createFileUntilFileNameNotDuplicate(oriName, storeFile.getHash(),
+                        storeFile.getSize(), torrentDirectory.getId(), userId, mimeType) :
+                userFileOperation.createFileAndRewriteWhenDuplicate(hash, storeFile.getHash(),
+                        storeFile.getSize(), torrentDirectory.getId(), userId, mimeType);
         result.put("storeFilename", fileUntilFileNameNotDuplicate.getFileName());
+        // Well, we check if this file already downloaded..
+        // No need. MQ will check this task again.
         offlineTaskService.dispatchTorrentAdded(bucket, key, urlDecode, hash, userId);
         return result;
     }

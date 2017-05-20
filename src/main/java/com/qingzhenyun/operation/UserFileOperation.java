@@ -43,6 +43,15 @@ public class UserFileOperation extends BaseFileOperation {
                 fileSize, parentId, userId, DirectoryConst.NORMAL_DIRECTORY, fileId, mime);
     }
 
+    public UserFile createFileAndIgnoreWhenDuplicate(String fileName, String fileId, long fileSize, String parentId, Integer userId, String mime) {
+        UserFile fileByName = getFileByName(fileName, parentId, userId);
+        if (fileByName != null) {
+            return fileByName;
+        }
+        return createUserFile(fileName, CommonFileConst.FILE,
+                fileSize, parentId, userId, DirectoryConst.NORMAL_DIRECTORY, fileId, mime);
+    }
+
     public UserFile createFileAndRewriteWhenDuplicate(String fileName, String fileId, long fileSize, String parentId, Integer userId, String mime) {
         UserFileRecord userStoreRecordFileByName = getUserStoreRecordFileByName(fileName, parentId, userId);
         if (userStoreRecordFileByName != null) {

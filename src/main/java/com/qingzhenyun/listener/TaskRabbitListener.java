@@ -1,7 +1,7 @@
 package com.qingzhenyun.listener;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.qingzhenyun.constans.MqConst;
+import com.qingzhenyun.common.constant.MqConst;
 import com.qingzhenyun.operation.StoreFileOperation;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;

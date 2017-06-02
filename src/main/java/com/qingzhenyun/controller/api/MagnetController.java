@@ -1,6 +1,6 @@
 package com.qingzhenyun.controller.api;
 
-import com.qingzhenyun.entity.Magnet;
+import com.qingzhenyun.common.magnet.Magnet;
 import com.qingzhenyun.service.OfflineTaskService;
 import com.qingzhenyun.util.UserUtil;
 import lombok.extern.slf4j.Slf4j;

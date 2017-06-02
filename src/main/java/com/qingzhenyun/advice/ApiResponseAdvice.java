@@ -1,6 +1,6 @@
 package com.qingzhenyun.advice;
 
-import com.qingzhenyun.entity.ApiResponseEntity;
+import com.qingzhenyun.common.entity.ApiResponseEntity;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;

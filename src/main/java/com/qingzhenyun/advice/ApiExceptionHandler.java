@@ -1,7 +1,7 @@
 package com.qingzhenyun.advice;
 
-import com.qingzhenyun.entity.ApiResponseEntity;
-import com.qingzhenyun.exception.ApiException;
+import com.qingzhenyun.common.entity.ApiResponseEntity;
+import com.qingzhenyun.common.exception.ApiException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

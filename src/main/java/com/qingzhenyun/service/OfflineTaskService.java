@@ -1,8 +1,6 @@
 package com.qingzhenyun.service;
 
-import com.google.common.base.Charsets;
-import com.google.common.hash.Hashing;
-import com.qingzhenyun.constans.MqConst;
+import com.qingzhenyun.common.constant.MqConst;
 import org.springframework.amqp.rabbit.core.RabbitMessagingTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;

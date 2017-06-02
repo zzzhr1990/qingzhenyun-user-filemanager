@@ -1,11 +1,11 @@
 package com.qingzhenyun.operation;
 
-import com.qingzhenyun.constans.CommonFileConst;
-import com.qingzhenyun.constans.DirectoryConst;
-import com.qingzhenyun.exception.ApiException;
+import com.qingzhenyun.common.constant.CommonFileConst;
+import com.qingzhenyun.common.constant.DirectoryConst;
+import com.qingzhenyun.common.entity.ApiResults;
+import com.qingzhenyun.common.exception.ApiException;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.UserFile;
 import com.qingzhenyun.jooq.common.generated.tables.records.UserFileRecord;
-import org.apache.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -37,7 +37,7 @@ public class UserFileOperation extends BaseFileOperation {
     public UserFile createFileAndThrowErrorWhenDuplicate(String fileName, String fileId, long fileSize, String parentId, Integer userId, String mime) {
         UserFile fileByName = getFileByName(fileName, parentId, userId);
         if (fileByName != null) {
-            throw new ApiException(HttpStatus.SC_INSUFFICIENT_STORAGE, "FILE_ALREADY_EXISTS");
+            throw new ApiException(ApiResults.INSUFFICIENT_STORAGE, "FILE_ALREADY_EXISTS");
         }
         return createUserFile(fileName, CommonFileConst.FILE,
                 fileSize, parentId, userId, DirectoryConst.NORMAL_DIRECTORY, fileId, mime);

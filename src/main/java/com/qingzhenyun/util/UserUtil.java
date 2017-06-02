@@ -1,6 +1,7 @@
 package com.qingzhenyun.util;
 
-import com.qingzhenyun.exception.ApiException;
+import com.qingzhenyun.common.entity.ApiResults;
+import com.qingzhenyun.common.exception.ApiException;
 import com.qingzhenyun.jooq.common.generated.Tables;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.User;
 import lombok.extern.slf4j.Slf4j;
@@ -21,14 +22,14 @@ public class UserUtil implements ApplicationContextAware {
 
     public static Integer ensureUserIdNotNull(Integer userId) {
         if (userId == null) {
-            throw new ApiException(HttpStatus.BAD_REQUEST, "USER_ID_MISSING");
+            throw new ApiException(ApiResults.BAD_REQUEST, "USER_ID_MISSING");
         }
         return userId;
     }
 
     public static <T> T ensureDataNotNull(T data, String message) {
         if (data == null) {
-            throw new ApiException(HttpStatus.BAD_REQUEST, "USER_ID_MISSING");
+            throw new ApiException(ApiResults.BAD_REQUEST, "USER_ID_MISSING");
         }
         return data;
     }
@@ -38,14 +39,14 @@ public class UserUtil implements ApplicationContextAware {
 
     public static User getUserById(Integer id) {
         if (dslContext == null) {
-            throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "DSL_NOT_READY");
+            throw new ApiException(ApiResults.INTERNAL_SERVER_ERROR, "DSL_NOT_READY");
         }
         User user = dslContext.fetchOne(Tables.USER, Tables.USER.ID.eq(id)).into(User.class);
         if (user == null) {
-            throw new ApiException(HttpStatus.UNAUTHORIZED, "USER_NOT_FOUND");
+            throw new ApiException(ApiResults.UNAUTHORIZED, "USER_NOT_FOUND");
         }
         if (user.getStatus() == 10) {
-            throw new ApiException(HttpStatus.UNAUTHORIZED, "USER_BANNED");
+            throw new ApiException(ApiResults.UNAUTHORIZED, "USER_BANNED");
         }
         return user;
     }

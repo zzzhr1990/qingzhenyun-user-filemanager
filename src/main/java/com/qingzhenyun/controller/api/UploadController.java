@@ -1,12 +1,10 @@
 package com.qingzhenyun.controller.api;
 
 import com.qingzhenyun.config.wcs.WcsApi;
-import com.qingzhenyun.exception.ApiException;
-import com.qingzhenyun.jooq.common.generated.tables.pojos.User;
+
 import com.qingzhenyun.wcs.entity.PutPolicy;
 import com.qingzhenyun.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

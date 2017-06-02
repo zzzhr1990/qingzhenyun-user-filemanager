@@ -1,6 +1,6 @@
 package com.qingzhenyun.operation;
 
-import com.qingzhenyun.constans.CommonFileConst;
+import com.qingzhenyun.common.constant.CommonFileConst;
 import com.qingzhenyun.jooq.common.generated.Tables;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.UserFile;
 import com.qingzhenyun.jooq.common.generated.tables.records.UserFileRecord;

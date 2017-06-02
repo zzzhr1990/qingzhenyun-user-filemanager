@@ -2,9 +2,10 @@ package com.qingzhenyun.service;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.BaseEncoding;
-import com.qingzhenyun.constans.DirectoryConst;
-import com.qingzhenyun.constans.StoreFileConst;
-import com.qingzhenyun.exception.ApiException;
+import com.qingzhenyun.common.constant.DirectoryConst;
+import com.qingzhenyun.common.constant.StoreFileConst;
+import com.qingzhenyun.common.entity.ApiResults;
+import com.qingzhenyun.common.exception.ApiException;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.StoreFile;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.UserFile;
 import com.qingzhenyun.operation.DirectoryOperation;
@@ -45,7 +46,7 @@ public class WcsCallbackService {
         }
         String bucket = result.get("bucket");
         if (bucket == null) {
-            throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "BUCKET_EMPTY");
+            throw new ApiException(ApiResults.INTERNAL_SERVER_ERROR, "BUCKET_EMPTY");
         }
         long size = Long.parseLong(result.getOrDefault("size", "0"));
         String ip = result.getOrDefault("ip", "Unknown");
@@ -53,11 +54,11 @@ public class WcsCallbackService {
         Integer userId = Integer.parseInt(result.getOrDefault("userId", "1"));
         String hash = result.get("hash");
         if (hash == null) {
-            throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "HASH_EMPTY");
+            throw new ApiException(ApiResults.INTERNAL_SERVER_ERROR, "HASH_EMPTY");
         }
         String key = result.get("key");
         if (key == null) {
-            throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "KEY_EMPTY");
+            throw new ApiException(ApiResults.INTERNAL_SERVER_ERROR, "KEY_EMPTY");
         }
         String oriName = "Unknown";
         int st = returnBody.indexOf("@qzyfilestart");

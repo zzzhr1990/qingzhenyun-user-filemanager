@@ -1,8 +1,7 @@
 package com.qingzhenyun.operation;
 
-import com.qingzhenyun.constans.DirectoryConst;
-import com.qingzhenyun.constans.CommonFileConst;
-import com.qingzhenyun.jooq.common.generated.Tables;
+import com.qingzhenyun.common.constant.DirectoryConst;
+import com.qingzhenyun.common.constant.CommonFileConst;
 import com.qingzhenyun.jooq.common.generated.tables.pojos.UserFile;
 import com.qingzhenyun.jooq.common.generated.tables.records.UserFileRecord;
 import com.qingzhenyun.service.AbstractDslService;
